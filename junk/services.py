@@ -39,14 +39,14 @@ added = list(sorted(set2 - set1))
 # print("=======================================================")
 # #checking if every file as indications or other div
 # for finding if its content is in bengali or not
-# for index,i in enumerate(dir_list):
-#     file= cwd+"/data/data/"+i
-#     with open(file, encoding="utf-8") as fp:
-#         soup = BeautifulSoup(fp, 'html5lib')
-#     id_html = soup.find(id="indications")
-#     print(index,end='\r')
-#     if id_html == None:
-#         print(i)
+for index,i in enumerate(dir_list):
+    file= cwd+"/data/data/"+i
+    with open(file, encoding="utf-8") as fp:
+        soup = BeautifulSoup(fp, 'html5lib')
+    id_html = soup.find(id="indications")
+    print(index,end='\r')
+    if id_html == None:
+        print(i)
 
 # 31869.html
 # 32474.html

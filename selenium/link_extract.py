@@ -47,14 +47,13 @@ for i in range(750):
             continue
         break
     
-    # going to the next page
+    # going to the next page - it can be done more efficiently
     try:
         next_page_button = driver.find_element(By.XPATH, '//li/a[@rel="next"]')
         data['last']=next_page_button.get_attribute("href")
         print(data['last'])
-        next_page_button.click()
     except Exception as e:
-        print("Next page link error/ No more p\age")
+        print("Next page link error/ No more page")
         break
 
     #extracting the URLs for the medicine is available
@@ -64,12 +63,11 @@ for i in range(750):
         print("Link Extraction Error")
     for i in medicine_url:
         extracted_medicine_url = i.get_attribute("href")
-        temp_dictionary= {
+        data['url_list'].append({
             "url": extracted_medicine_url,
             "bn_url": extracted_medicine_url +"/bn",
             "scraped": False
-        }
-        data['url_list'].append(temp_dictionary)
+        })
         
     with open(f'{cwd}/selenium/url_database.json', 'w') as fp:
         json.dump(data, fp)
