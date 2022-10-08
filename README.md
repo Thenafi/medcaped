@@ -8,4 +8,4 @@ The files are very unstructured. The steps for successfully scraping the data ar
 2.  Get the HTML page source (for bs4 script only)
 3.  Extract the data
 
-Future plane - make the read me great
+Future plane - make the readme great, make the code more stable - more clean
