@@ -138,6 +138,9 @@ data.zip
 data45/
 datatest12/
 final_data.json
+bs4/url_database.json
+selenium/url_database.json
+selenium/url_database2.json
 # Spyder project settings
 .spyderproject
 .spyproject

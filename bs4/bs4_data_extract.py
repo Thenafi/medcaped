@@ -9,8 +9,7 @@ cwd =  os.getcwd()
 
 #  need to exclude the git ignore and bangla file
 dir_list = os.listdir(cwd+"/bs4/html")[1:-1]
-data = []
-print(dir_list)
+
 if len(dir_list)<=2:
     print("No html or data files. Extract html files")
     sys.exit()
