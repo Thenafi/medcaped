@@ -132,6 +132,12 @@ venv.bak/
 data.json
 data copy.json
 data/
+bangla/
+bangla copy/
+data.zip
+data45/
+datatest12/
+final_data.json
 # Spyder project settings
 .spyderproject
 .spyproject
