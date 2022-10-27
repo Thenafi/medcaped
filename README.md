@@ -1,6 +1,6 @@
 # Medcaped
 
-Python selenium and bs4 script to scrape https://medex.com.bd website filtering language specific data. This was only made for educational purpose.
+Python selenium and bs4 script to scrape https://medex.com.bd and https://www.shajgoj.com/(bs4 only) website filtering language specific & health related data. This was only made for educational purpose.
 
 The files are very unstructured. The steps for successfully scraping the data are -
 

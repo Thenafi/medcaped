@@ -137,7 +137,14 @@ bangla copy/
 data.zip
 data45/
 datatest12/
+json.zip
+test.py
+test1.py
+test2.py
+test3.py
+
 final_data.json
+/shakal/url_database.json
 bs4/url_database.json
 selenium/url_database.json
 selenium/url_database2.json
