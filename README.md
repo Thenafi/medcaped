@@ -8,4 +8,4 @@ The files are very unstructured. The steps to run are -
 2.  Get the HTML page source (for bs4 script only)(html_extract)
 3.  Extract the data (data_extract)
 
-Future plane - make the readme great, make the code more stable - more clean
+Future plane - make the readme great, make the code more stable - more clean - fix medex cwd

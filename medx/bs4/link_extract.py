@@ -3,22 +3,23 @@ import json
 import os
 import random
 import re
-from tkinter.messagebox import NO
+import time
+import uuid
 import requests
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 
 ua = UserAgent()
 cwd =  os.getcwd()
-with open(f'{cwd}/bs4/url_database.json','w+') as file:
-    try:
+try:
+    with open(f'{cwd}/bs4/url_database.json','w+') as file:
         file_data = json.load(file)
         data =  file_data
-    except:
-        data = {
-            "first": "https://medex.com.bd/brands",
-            "url_list":[]
-        }
+except:
+    data = {
+        "first": "https://medex.com.bd/brands",
+        "url_list":[]
+    }
 
 
 def get_link(_):
