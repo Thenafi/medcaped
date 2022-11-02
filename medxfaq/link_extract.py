@@ -27,10 +27,11 @@ except:
         ],
     }
 
-print(len(data['url_list']))
+
 print(len(set([i['url'] for i in data['url_list']])))
 
 # function that returns unique unindexed url
+print(len(data['url_list']))
 def get_unindexed():
     for i in data['url_list']:
         if i['indexed'] == False:
@@ -40,6 +41,9 @@ def get_unindexed():
 
 
 def get_link():
+    print(len(data['url_list']))
+    # get the length of unindexed url
+    print( len([i for i in data['url_list'] if i['indexed'] == False]))
     temp_obj = get_unindexed()
     print(temp_obj)
     if temp_obj == None:
@@ -51,23 +55,22 @@ def get_link():
             if i['url'] == temp_obj['url']:
                 i['indexed'] = True
 
-        
         soup = BeautifulSoup(res.text, 'html5lib')
-        print(res.status_code)
         if res.status_code!=200:
-            continue
+            return res.status_code
         break
-    print("scraping")
     # getting next page link
     all_medicines= soup.select("body > div.q-container > div > div.rl-main > aside > div > p > a")
     for i in all_medicines:
-        data['url_list'].append({
-            "url": i['href'],
-            "scraped": False,
-            "indexed": False
-        })
-    # update the database only with unique urls
-    data['url_list'] = [dict(t) for t in {tuple(d.items()) for d in data['url_list']}]
+        # check if the url is already present in the database
+        if i['href'] not in [i['url'] for i in data['url_list']]:
+            data['url_list'].append({
+                "url": i['href'],
+                "scraped": False,
+                "indexed": False
+            })
+    # update the database with only unique urls using set method
+    data['url_list'] = list({v['url']:v for v in data['url_list']}.values())
 
     with open(f'{cwd}/medxfaq/url_database.json','w+') as file:
         json.dump(data, file)
@@ -75,6 +78,7 @@ def get_link():
 
 res_list=[]
 
+print(get_unindexed())
 while get_unindexed() != None:
     get_link()
 

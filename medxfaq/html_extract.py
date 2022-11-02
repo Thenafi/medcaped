@@ -26,14 +26,13 @@ dic_list= [dic for dic in data['url_list']]
 print(len(dic_list))
 
 
-
-
 # getting full page data. here the language specific data can be filtered but chose to download all then filter later.
 def getData(object_data):
     headers = {"User-Agent": ua.random}
+
     if object_data['scraped']== False:
         url = object_data['url']
-        uuid_2 = uuid.uuid4()
+        uuid_2 = url.split('/')[-1]
         print(uuid_2,end='\r')
         for p in range(10):
             try:
@@ -62,7 +61,6 @@ responses = list(res)
 
 print(len(responses))
 print(err_dic)
-
 #sometimes file get corrupted because of threading thats why saving file at last
 with open(f'{cwd}/medxfaq/url_database.json','w+') as file:
     json.dump(data, file)

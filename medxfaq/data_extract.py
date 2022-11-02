@@ -39,6 +39,11 @@ for index,i in enumerate(dir_list):
                 if section_name:
                     section_name = section_name['id']
                 if section_name != None:
+                    try:
+                        for i in soup.select("#uses > div"):
+                            i.replace_with(" ")
+                    except:
+                        pass
                     med_data[section_name] = section.getText().replace('\n','').replace('\r','').strip()
                         
             with open(f'{cwd}/medxfaq/json/{med_data["med_id"]}.json', 'w+',encoding="utf-8", errors='ignore') as fp:
