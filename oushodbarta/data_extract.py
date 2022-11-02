@@ -6,7 +6,7 @@ import os
 import re
 import requests
 from bs4.dammit import EncodingDetector
-
+    
 cwd =  os.getcwd()
 try:
     with open(f'{cwd}/oushodbarta/url_database.json','r') as file:

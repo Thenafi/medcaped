@@ -142,7 +142,8 @@ test.py
 test1.py
 test2.py
 test3.py
-
+*.json
+*.html
 final_data.json
 /shakal/url_database.json
 bs4/url_database.json
