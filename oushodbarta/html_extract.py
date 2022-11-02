@@ -12,7 +12,7 @@ ua = UserAgent()
 
 cwd =  os.getcwd() 
 try:
-    with open(f'{cwd}/shakal/url_database.json','r') as file:
+    with open(f'{cwd}/oushodbarta/url_database.json','r') as file:
         file_data = json.load(file)
         data =  file_data
 except:
@@ -33,19 +33,16 @@ def getData(object_data):
         print(id,end='\r')
         for p in range(10):
             try:
-                response = requests.get(url,headers=headers,timeout=5)
                 res = requests.get(url,headers=headers,allow_redirects=False ,timeout=15)
-                soup = BeautifulSoup(res.text, 'html5lib')
-                tile = soup.select_one('#sf-module-post > article > header > h1').getText().strip()
-                name =soup.select_one("#sf-module-post > article > div.sf-entry-content.sf-has-dropcap").getText().replace('\n','').replace('\r','').strip()
-                
-                for dic in data['url_list']:
-                    if dic['id'] == id:
-                        dic['scraped'] = True
-                        break
-                with open(f"{cwd}/shakal/html/{id}.html", "w+",encoding="utf-8") as file1:
-                    file1.writelines(res.text)
-                break
+                if res.status_code==200:
+                    for dic in data['url_list']:
+                        if dic['id'] == id:
+                            dic['scraped'] = True
+                            break
+                    with open(f"{cwd}/oushodbarta/html/{id}.html", "w+",encoding="utf-8") as file1:
+                        print(res.encoding)
+                        file1.write(str(BeautifulSoup(res.content, 'html5lib' , from_encoding="utf-8")))
+                    break
             except Exception as e:
                 print(e)
                 if p>5:
@@ -64,5 +61,5 @@ print(len(responses))
 print(err_dic)
 
 #sometimes file get corrupted because of threading thats why saving file at last
-with open(f'{cwd}/shakal/url_database.json','w+') as file:
+with open(f'{cwd}/oushodbarta/url_database.json','w+') as file:
     json.dump(data, file)
